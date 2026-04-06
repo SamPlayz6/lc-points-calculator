@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1e40af;
-  --color-primary-light: #3b82f6;
-  --color-primary-dark: #1e3a8a;
-  --color-accent: #f59e0b;
-  --color-accent-light: #fbbf24;
-  --color-surface: #f8fafc;
-  --color-surface-dark: #f1f5f9;
+  --color-primary: #0d6b3d;
+  --color-primary-light: #16a34a;
+  --color-primary-dark: #064e2b;
+  --color-accent: #d97706;
+  --color-accent-light: #f59e0b;
+  --color-surface: #fafaf8;
+  --color-surface-dark: #f0eeeb;
   --color-maupka: #6366f1;
+  --color-hero: #053621;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -27,4 +28,24 @@ select {
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
   padding-right: 2.5rem;
+}
+
+/* Smooth transitions on interactive elements */
+select, button, input, a {
+  transition: all 0.15s ease;
+}
+
+/* Points counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.points-animate {
+  animation: countUp 0.2s ease-out;
+}
+
+/* Subtle card hover */
+.card-hover:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-color: #d1d5db;
 }

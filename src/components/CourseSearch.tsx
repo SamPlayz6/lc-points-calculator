@@ -42,7 +42,7 @@ export default function CourseSearch({ userPoints }: Props) {
   const hasMore = filtered.length > 20 && !showAll;
 
   return (
-    <section className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+    <section className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden card-hover">
       <div className="px-4 sm:px-6 py-4 border-b border-gray-100">
         <h2 className="text-lg font-semibold text-gray-900">CAO Course Finder</h2>
         <p className="text-sm text-gray-500 mt-0.5">Search {CAO_COURSES.length} courses by name, code, or college</p>
