@@ -1,4 +1,4 @@
-import { type Grade, ALL_GRADES, getPoints, hasMathsBonus, MATHS_BONUS } from '../data/points';
+import { type Grade, ALL_GRADES, LCVP_GRADES, getPoints, hasMathsBonus, MATHS_BONUS } from '../data/points';
 import { LC_SUBJECTS } from '../data/subjects';
 
 interface Props {
@@ -39,7 +39,7 @@ export default function SubjectRow({
         className="border border-gray-300 rounded-lg px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-primary-light focus:border-primary-light outline-none disabled:opacity-40 disabled:cursor-not-allowed"
       >
         <option value="">Grade</option>
-        {ALL_GRADES.map(g => (
+        {(subject === 'LCVP Link Modules' ? LCVP_GRADES : ALL_GRADES).map(g => (
           <option key={g} value={g}>{g}</option>
         ))}
       </select>
