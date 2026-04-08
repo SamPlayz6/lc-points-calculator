@@ -45,7 +45,7 @@ function NotFound() {
           </p>
           <Link
             to="/"
-            className="inline-block mt-2 px-6 py-3 bg-navy-deep text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
+            className="inline-block mt-2 px-6 py-3 bg-ink text-paper font-medium hover:bg-ink/80 transition-colors"
           >
             Back to Calculator
           </Link>
