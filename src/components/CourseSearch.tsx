@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { CAO_COURSES, COLLEGES } from '../data/cao-cutoffs';
 
 interface Props {
@@ -106,7 +107,7 @@ export default function CourseSearch({ userPoints }: Props) {
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="text-xs font-mono text-gray-400">{course.code}</span>
-                        <span className="font-medium text-sm text-gray-900">{course.name}</span>
+                        <Link to={`/course/${course.code}`} className="font-medium text-sm text-gray-900 hover:text-primary transition-colors">{course.name}</Link>
                         {course.note && (
                           <span className="text-xs bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded">
                             {course.note}

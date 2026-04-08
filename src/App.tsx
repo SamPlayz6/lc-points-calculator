@@ -1,11 +1,13 @@
 import { useState, useCallback } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Calculator from './components/Calculator';
 import CourseSearch from './components/CourseSearch';
 import MaupkaCTA from './components/MaupkaCTA';
 import Footer from './components/Footer';
+import CoursePage from './components/CoursePage';
 
-export default function App() {
+function HomePage() {
   const [points, setPoints] = useState(0);
   const handlePointsChange = useCallback((p: number) => setPoints(p), []);
 
@@ -26,5 +28,16 @@ export default function App() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/course/:code" element={<CoursePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

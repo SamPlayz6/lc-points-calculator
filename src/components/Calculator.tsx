@@ -119,7 +119,29 @@ export default function Calculator({ onPointsChange }: { onPointsChange: (points
 
         {result.total > 0 && result.breakdown.length > 0 && (
           <div className="mt-4 pt-3 border-t border-gray-200">
-            <div className="text-xs text-gray-500 font-medium mb-2">Breakdown (best 6)</div>
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-xs text-gray-500 font-medium">Breakdown (best 6)</div>
+              <button
+                onClick={() => {
+                  const text = `I got ${result.total} CAO points! 🎓\n${result.breakdown.map(b => `${b.subject}: ${b.points}${b.bonus > 0 ? `+${b.bonus}` : ''}`).join('\n')}\n\nCalculate yours: https://lcpoints.sdd.ie`;
+                  if (navigator.share) {
+                    navigator.share({ title: 'My LC Points', text });
+                  } else {
+                    navigator.clipboard.writeText(text);
+                    const btn = document.activeElement as HTMLButtonElement;
+                    const orig = btn.textContent;
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => { btn.textContent = orig; }, 2000);
+                  }
+                }}
+                className="text-xs text-primary hover:text-primary-dark font-medium flex items-center gap-1 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/>
+                </svg>
+                Share results
+              </button>
+            </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1 text-xs">
               {result.breakdown.map((b, i) => (
                 <div key={i} className="flex justify-between">
