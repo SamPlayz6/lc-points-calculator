@@ -43,27 +43,26 @@ export default function CourseSearch({ userPoints }: Props) {
   const hasMore = filtered.length > 20 && !showAll;
 
   return (
-    <section className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden card-hover">
-      <div className="px-4 sm:px-6 py-4 border-b border-gray-100">
-        <h2 className="text-lg font-semibold text-gray-900">CAO Course Finder</h2>
-        <p className="text-sm text-gray-500 mt-0.5">Search {CAO_COURSES.length} courses by name, code, or college</p>
+    <section className="card">
+      <div className="px-4 sm:px-6 py-4 border-b border-paper-dark">
+        <h2 className="font-[family-name:var(--font-display)] text-lg text-ink">CAO Course Finder</h2>
+        <p className="text-sm text-ink-muted mt-0.5">{CAO_COURSES.length} courses from {COLLEGES.length} colleges</p>
       </div>
 
       <div className="px-4 sm:px-6 py-4 space-y-3">
-        {/* Search & filters */}
         <input
           type="text"
           value={search}
           onChange={e => { setSearch(e.target.value); setShowAll(false); }}
-          placeholder="Search courses, e.g. Computer Science, UCC, CK401..."
-          className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-primary-light focus:border-primary-light outline-none"
+          placeholder="Try 'Computer Science', 'UCC', or 'CK401'..."
+          className="w-full border border-paper-dark rounded-lg px-3 py-2.5 text-sm bg-white text-ink placeholder:text-ink-muted/50 hover:border-ink-muted/30"
         />
 
         <div className="flex flex-wrap gap-2">
           <select
             value={college}
             onChange={e => { setCollege(e.target.value); setShowAll(false); }}
-            className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-primary-light outline-none"
+            className="border border-paper-dark rounded-lg px-3 py-2 text-sm bg-white text-ink hover:border-ink-muted/30"
           >
             <option value="">All colleges</option>
             {COLLEGES.map(c => (
@@ -72,15 +71,15 @@ export default function CourseSearch({ userPoints }: Props) {
           </select>
 
           {userPoints > 0 && (
-            <div className="flex rounded-lg border border-gray-300 overflow-hidden text-sm">
+            <div className="flex rounded-lg border border-paper-dark overflow-hidden text-sm">
               {(['all', 'qualify', 'close'] as FilterMode[]).map(mode => (
                 <button
                   key={mode}
                   onClick={() => { setFilter(mode); setShowAll(false); }}
-                  className={`px-3 py-2 transition-colors ${
+                  className={`px-3 py-2 font-medium ${
                     filter === mode
-                      ? 'bg-primary text-white'
-                      : 'bg-white text-gray-600 hover:bg-gray-50'
+                      ? 'bg-navy-deep text-white'
+                      : 'bg-white text-ink-muted hover:bg-paper-warm'
                   }`}
                 >
                   {mode === 'all' ? 'All' : mode === 'qualify' ? 'I qualify' : 'Almost there'}
@@ -90,15 +89,14 @@ export default function CourseSearch({ userPoints }: Props) {
           )}
         </div>
 
-        {/* Results */}
         {filtered.length === 0 ? (
-          <div className="text-center py-8 text-gray-400 text-sm">
-            No courses found matching your search
+          <div className="text-center py-8 text-ink-muted text-sm">
+            No courses match that search
           </div>
         ) : (
           <>
-            <div className="text-xs text-gray-500">{filtered.length} course{filtered.length !== 1 ? 's' : ''} found</div>
-            <div className="divide-y divide-gray-100">
+            <div className="text-xs text-ink-muted">{filtered.length} course{filtered.length !== 1 ? 's' : ''}</div>
+            <div className="divide-y divide-paper-dark">
               {displayed.map(course => {
                 const qualifies = userPoints > 0 && userPoints >= course.points;
                 const close = userPoints > 0 && userPoints >= course.points - 30 && !qualifies;
@@ -106,30 +104,30 @@ export default function CourseSearch({ userPoints }: Props) {
                   <div key={course.code} className="py-3 flex items-start justify-between gap-3">
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-xs font-mono text-gray-400">{course.code}</span>
-                        <Link to={`/course/${course.code}`} className="font-medium text-sm text-gray-900 hover:text-primary transition-colors">{course.name}</Link>
+                        <span className="text-[0.7rem] font-[family-name:var(--font-mono)] text-ink-muted/50">{course.code}</span>
+                        <Link to={`/course/${course.code}`} className="font-medium text-sm text-ink hover:text-navy">{course.name}</Link>
                         {course.note && (
-                          <span className="text-xs bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded">
+                          <span className="text-[0.65rem] bg-amber-bg text-amber-warn px-1.5 py-0.5 rounded font-medium">
                             {course.note}
                           </span>
                         )}
                       </div>
-                      <div className="text-xs text-gray-500 mt-0.5">{course.college}</div>
+                      <div className="text-xs text-ink-muted mt-0.5">{course.college}</div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className={`text-sm font-semibold tabular-nums ${
-                        qualifies ? 'text-green-600' : close ? 'text-amber-600' : 'text-gray-700'
+                      <span className={`text-sm font-semibold tabular-nums font-[family-name:var(--font-mono)] ${
+                        qualifies ? 'text-green-ok' : close ? 'text-amber-warn' : 'text-ink'
                       }`}>
                         {course.points}
                       </span>
                       {qualifies && (
-                        <span className="text-xs bg-green-50 text-green-700 px-1.5 py-0.5 rounded font-medium">
-                          Qualified
+                        <span className="text-[0.65rem] bg-green-bg text-green-ok px-1.5 py-0.5 rounded font-medium">
+                          You're in
                         </span>
                       )}
                       {close && (
-                        <span className="text-xs bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded font-medium">
-                          -{course.points - userPoints}
+                        <span className="text-[0.65rem] bg-amber-bg text-amber-warn px-1.5 py-0.5 rounded font-medium">
+                          {course.points - userPoints} away
                         </span>
                       )}
                     </div>
@@ -141,7 +139,7 @@ export default function CourseSearch({ userPoints }: Props) {
             {hasMore && (
               <button
                 onClick={() => setShowAll(true)}
-                className="w-full text-center text-sm text-primary hover:text-primary-dark font-medium py-2 transition-colors"
+                className="w-full text-center text-sm text-navy hover:text-ink font-medium py-2"
               >
                 Show all {filtered.length} courses
               </button>
@@ -150,8 +148,8 @@ export default function CourseSearch({ userPoints }: Props) {
         )}
       </div>
 
-      <div className="px-4 sm:px-6 py-3 bg-gray-50 border-t border-gray-200 text-xs text-gray-400">
-        Points based on CAO Round 1, 2025. Cutoffs change yearly. Always check cao.ie for official data.
+      <div className="px-4 sm:px-6 py-3 bg-paper-warm border-t border-paper-dark text-[0.7rem] text-ink-muted">
+        Points from CAO Round 1, 2025. Cutoffs change yearly. Check <a href="https://www.cao.ie" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink">cao.ie</a> for official data.
       </div>
     </section>
   );

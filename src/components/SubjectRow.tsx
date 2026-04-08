@@ -24,9 +24,9 @@ export default function SubjectRow({
       <select
         value={subject}
         onChange={e => onSubjectChange(index, e.target.value)}
-        className="border border-gray-300 rounded-lg px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-primary-light focus:border-primary-light outline-none truncate"
+        className="border border-paper-dark rounded-lg px-3 py-2.5 text-sm bg-white text-ink truncate hover:border-ink-muted/30"
       >
-        <option value="">Select subject...</option>
+        <option value="">Pick a subject...</option>
         {available.map(s => (
           <option key={s} value={s}>{s}</option>
         ))}
@@ -36,7 +36,7 @@ export default function SubjectRow({
         value={grade}
         onChange={e => onGradeChange(index, e.target.value as Grade)}
         disabled={!subject}
-        className="border border-gray-300 rounded-lg px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-primary-light focus:border-primary-light outline-none disabled:opacity-40 disabled:cursor-not-allowed"
+        className="border border-paper-dark rounded-lg px-3 py-2.5 text-sm bg-white text-ink hover:border-ink-muted/30 disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <option value="">Grade</option>
         {(subject === 'LCVP Link Modules' ? LCVP_GRADES : ALL_GRADES).map(g => (
@@ -44,11 +44,11 @@ export default function SubjectRow({
         ))}
       </select>
 
-      <div className="text-right font-semibold text-sm tabular-nums min-w-[50px]">
+      <div className="text-right font-medium text-sm tabular-nums min-w-[50px] font-[family-name:var(--font-mono)]">
         {points !== null && (
-          <span>
+          <span className="text-ink">
             {points}
-            {bonus > 0 && <span className="text-accent text-xs ml-0.5">+{bonus}</span>}
+            {bonus > 0 && <span className="text-gold text-xs ml-0.5">+{bonus}</span>}
           </span>
         )}
       </div>
@@ -56,7 +56,7 @@ export default function SubjectRow({
       <button
         onClick={() => onRemove(index)}
         disabled={!canRemove}
-        className="text-gray-400 hover:text-red-500 disabled:opacity-20 disabled:cursor-not-allowed transition-colors p-1"
+        className="text-ink-muted/40 hover:text-red-400 disabled:opacity-20 disabled:cursor-not-allowed p-1"
         aria-label="Remove subject"
       >
         <span className="text-lg leading-none">&times;</span>

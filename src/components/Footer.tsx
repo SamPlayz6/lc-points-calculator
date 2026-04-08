@@ -1,31 +1,18 @@
 export default function Footer() {
   return (
-    <footer className="text-center text-xs text-gray-400 py-8 space-y-3">
-      <div className="flex items-center justify-center gap-4 text-gray-500">
-        <a href="https://cgt.sdd.ie" className="hover:text-primary transition-colors">
-          Irish CGT Calculator
-        </a>
-        <span className="text-gray-300">|</span>
-        <a href="https://sdd.ie" className="hover:text-primary transition-colors">
-          More tools
-        </a>
+    <footer className="text-center py-10 px-4 space-y-3">
+      <div className="flex items-center justify-center gap-4 text-sm text-ink-muted">
+        <a href="https://cgt.sdd.ie" className="hover:text-ink">CGT Calculator</a>
+        <span className="text-paper-dark">|</span>
+        <a href="https://sdd.ie" className="hover:text-ink">More tools</a>
       </div>
-      <p>
-        Built by{' '}
-        <a href="https://sdd.ie" className="text-gray-500 hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
-          Sam Dunning
-        </a>
-        {' '}in Cork, Ireland
+      <p className="text-[0.75rem] text-ink-muted/60">
+        Made in Cork by{' '}
+        <a href="https://sdd.ie" className="hover:text-ink" target="_blank" rel="noopener noreferrer">Sam Dunning</a>.
+        Points from 2017+ scale. CAO cutoffs from Round 1, 2025.
+        Verify at{' '}
+        <a href="https://www.cao.ie" className="hover:text-ink" target="_blank" rel="noopener noreferrer">cao.ie</a>.
       </p>
-      <p>
-        Points based on the 2017+ grading scale. CAO cutoffs from Round 1, 2025.
-        Always verify with{' '}
-        <a href="https://www.cao.ie" className="text-gray-500 hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
-          cao.ie
-        </a>
-        .
-      </p>
-      {/* AdSense placeholder */}
       <div id="adsense-footer" className="mt-4" />
     </footer>
   );
