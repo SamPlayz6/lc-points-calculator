@@ -37,12 +37,12 @@ export default function CoursePage() {
 
   if (!course) {
     return (
-      <div className="min-h-screen bg-surface flex flex-col">
+      <div className="min-h-screen bg-paper flex flex-col">
         <Header />
         <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Course not found</h2>
-          <p className="text-gray-600 mb-6">The course code "{code}" wasn't found in our database.</p>
-          <Link to="/" className="text-primary hover:text-primary-dark font-medium">
+          <h2 className="text-2xl font-bold text-ink mb-4">Course not found</h2>
+          <p className="text-ink-muted mb-6">The course code "{code}" wasn't found in our database.</p>
+          <Link to="/" className="text-navy hover:text-navy-dark font-medium">
             Back to calculator
           </Link>
         </main>
@@ -66,46 +66,46 @@ export default function CoursePage() {
   }
 
   return (
-    <div className="min-h-screen bg-surface flex flex-col">
+    <div className="min-h-screen bg-paper flex flex-col">
       <Header />
 
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-6 sm:py-8 space-y-6">
         {/* Breadcrumb */}
-        <nav className="text-sm text-gray-500">
-          <Link to="/" className="hover:text-primary transition-colors">Calculator</Link>
+        <nav className="text-sm text-ink-muted">
+          <Link to="/" className="hover:text-navy transition-colors">Calculator</Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-700">{course.code}</span>
+          <span className="text-ink">{course.code}</span>
         </nav>
 
         {/* Course header */}
-        <section className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <section className="card overflow-hidden">
           <div className="px-4 sm:px-6 py-6">
             <div className="flex items-center gap-3 mb-2 flex-wrap">
-              <span className="text-sm font-mono bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{course.code}</span>
+              <span className="text-sm font-mono bg-paper-dark text-ink-muted px-2 py-0.5 rounded">{course.code}</span>
               {course.note && (
                 <span className="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded font-medium">{course.note}</span>
               )}
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">{course.name}</h1>
-            <p className="text-gray-600">{course.college}</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-ink mb-1">{course.name}</h1>
+            <p className="text-ink-muted">{course.college}</p>
           </div>
 
-          <div className="bg-gray-50 border-t border-gray-200 px-4 sm:px-6 py-5">
+          <div className="bg-paper-warm border-t border-paper-dark px-4 sm:px-6 py-5">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">CAO Points (2025)</div>
-                <div className="text-3xl font-bold text-primary tabular-nums">{course.points}</div>
+                <div className="text-xs text-ink-muted uppercase tracking-wide mb-1">CAO Points (2025)</div>
+                <div className="text-3xl font-bold text-navy tabular-nums">{course.points}</div>
               </div>
               <div>
-                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Grades needed</div>
-                <div className="text-lg font-semibold text-gray-800">{gradesNeeded}</div>
-                <div className="text-xs text-gray-500 mt-0.5">Approximate combination</div>
+                <div className="text-xs text-ink-muted uppercase tracking-wide mb-1">Grades needed</div>
+                <div className="text-lg font-semibold text-ink">{gradesNeeded}</div>
+                <div className="text-xs text-ink-muted mt-0.5">Approximate combination</div>
               </div>
               <div>
-                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Check your points</div>
+                <div className="text-xs text-ink-muted uppercase tracking-wide mb-1">Check your points</div>
                 <Link
                   to="/"
-                  className="inline-flex items-center gap-1.5 bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-dark transition-colors mt-1"
+                  className="inline-flex items-center gap-1.5 bg-navy-deep text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-navy transition-colors mt-1"
                 >
                   Open calculator
                 </Link>
@@ -115,16 +115,16 @@ export default function CoursePage() {
         </section>
 
         {/* Points context */}
-        <section className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">About the points requirement</h2>
-          <div className="text-sm text-gray-600 space-y-2">
+        <section className="card p-4 sm:p-6">
+          <h2 className="text-lg font-semibold text-ink mb-3">About the points requirement</h2>
+          <div className="text-sm text-ink-muted space-y-2">
             <p>
               <strong>{course.name}</strong> at {course.college} required <strong>{course.points} CAO points</strong> in Round 1 of 2025.
               This is the minimum number of points that secured an offer in the most recent admissions cycle.
             </p>
             <p>
               Points cutoffs change every year based on demand and the number of available places.
-              Use our <Link to="/" className="text-primary hover:text-primary-dark font-medium">LC Points Calculator</Link> to
+              Use our <Link to="/" className="text-navy hover:text-navy-dark font-medium">LC Points Calculator</Link> to
               see how your predicted grades compare.
             </p>
             {course.note && (
@@ -140,26 +140,26 @@ export default function CoursePage() {
 
         {/* Similar courses */}
         {similar.length > 0 && (
-          <section className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <div className="px-4 sm:px-6 py-4 border-b border-gray-100">
-              <h2 className="text-lg font-semibold text-gray-900">Similar courses</h2>
-              <p className="text-sm text-gray-500 mt-0.5">Other courses at {course.college} or in the same field</p>
+          <section className="card overflow-hidden">
+            <div className="px-4 sm:px-6 py-4 border-b border-paper-dark">
+              <h2 className="text-lg font-semibold text-ink">Similar courses</h2>
+              <p className="text-sm text-ink-muted mt-0.5">Other courses at {course.college} or in the same field</p>
             </div>
             <div className="divide-y divide-gray-100">
               {similar.map(c => (
                 <Link
                   key={c.code}
                   to={`/course/${c.code}`}
-                  className="flex items-center justify-between px-4 sm:px-6 py-3 hover:bg-gray-50 transition-colors"
+                  className="flex items-center justify-between px-4 sm:px-6 py-3 hover:bg-paper-warm transition-colors"
                 >
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-xs font-mono text-gray-400">{c.code}</span>
-                      <span className="font-medium text-sm text-gray-900">{c.name}</span>
+                      <span className="text-xs font-mono text-ink-muted/50">{c.code}</span>
+                      <span className="font-medium text-sm text-ink">{c.name}</span>
                     </div>
-                    <div className="text-xs text-gray-500">{c.college}</div>
+                    <div className="text-xs text-ink-muted">{c.college}</div>
                   </div>
-                  <span className="text-sm font-semibold tabular-nums text-gray-700 shrink-0 ml-3">{c.points}</span>
+                  <span className="text-sm font-semibold tabular-nums text-ink shrink-0 ml-3">{c.points}</span>
                 </Link>
               ))}
             </div>
@@ -167,28 +167,28 @@ export default function CoursePage() {
         )}
 
         {/* SEO content */}
-        <section className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">Frequently asked questions</h2>
+        <section className="card p-4 sm:p-6">
+          <h2 className="text-lg font-semibold text-ink mb-3">Frequently asked questions</h2>
           <div className="space-y-4 text-sm">
             <div>
-              <h3 className="font-semibold text-gray-800">How many points do I need for {course.name}?</h3>
-              <p className="text-gray-600 mt-1">
+              <h3 className="font-semibold text-ink">How many points do I need for {course.name}?</h3>
+              <p className="text-ink-muted mt-1">
                 You need {course.points} CAO points based on the 2025 Round 1 cutoff at {course.college} ({course.code}).
                 This can change each year.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-800">What grades do I need?</h3>
-              <p className="text-gray-600 mt-1">
+              <h3 className="font-semibold text-ink">What grades do I need?</h3>
+              <p className="text-ink-muted mt-1">
                 To reach {course.points} points, you approximately need {gradesNeeded} across your best 6 Leaving Cert subjects.
                 Remember, Higher Level Maths gives +25 bonus points if you get H6 or above.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-800">Can the points go up or down?</h3>
-              <p className="text-gray-600 mt-1">
+              <h3 className="font-semibold text-ink">Can the points go up or down?</h3>
+              <p className="text-ink-muted mt-1">
                 Yes. CAO cutoff points change every year depending on the number of applicants and available places.
-                Always check <a href="https://www.cao.ie" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark">cao.ie</a> for
+                Always check <a href="https://www.cao.ie" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-navy-dark">cao.ie</a> for
                 the most up-to-date information.
               </p>
             </div>
