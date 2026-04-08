@@ -20,13 +20,13 @@ export default function SubjectRow({
   const available = LC_SUBJECTS.filter(s => s === subject || !usedSubjects.includes(s));
 
   return (
-    <div className="grid grid-cols-[1fr_auto_auto_auto] sm:grid-cols-[1fr_120px_60px_40px] gap-2 items-center">
+    <div className="grid grid-cols-[1fr_auto_auto_auto] sm:grid-cols-[1fr_110px_50px_28px] gap-1.5 items-center py-1 border-b border-paper-dark/80 last:border-b-0">
       <select
         value={subject}
         onChange={e => onSubjectChange(index, e.target.value)}
-        className="border border-paper-dark rounded-lg px-3 py-2.5 text-sm bg-white text-ink truncate hover:border-ink-muted/30"
+        className="border-0 border-b border-transparent bg-transparent px-0 py-1.5 text-[0.85rem] text-ink truncate hover:border-ink/20 focus:border-ink"
       >
-        <option value="">Pick a subject...</option>
+        <option value="">Subject...</option>
         {available.map(s => (
           <option key={s} value={s}>{s}</option>
         ))}
@@ -36,7 +36,7 @@ export default function SubjectRow({
         value={grade}
         onChange={e => onGradeChange(index, e.target.value as Grade)}
         disabled={!subject}
-        className="border border-paper-dark rounded-lg px-3 py-2.5 text-sm bg-white text-ink hover:border-ink-muted/30 disabled:opacity-30 disabled:cursor-not-allowed"
+        className="border-0 border-b border-transparent bg-transparent px-0 py-1.5 text-[0.85rem] text-ink hover:border-ink/20 focus:border-ink disabled:opacity-20 disabled:cursor-not-allowed"
       >
         <option value="">Grade</option>
         {(subject === 'LCVP Link Modules' ? LCVP_GRADES : ALL_GRADES).map(g => (
@@ -44,11 +44,11 @@ export default function SubjectRow({
         ))}
       </select>
 
-      <div className="text-right font-medium text-sm tabular-nums min-w-[50px] font-[family-name:var(--font-mono)]">
+      <div className="text-right font-[family-name:var(--font-mono)] text-[0.8rem] tabular-nums">
         {points !== null && (
           <span className="text-ink">
             {points}
-            {bonus > 0 && <span className="text-gold text-xs ml-0.5">+{bonus}</span>}
+            {bonus > 0 && <span className="text-accent ml-0.5">+{bonus}</span>}
           </span>
         )}
       </div>
@@ -56,10 +56,10 @@ export default function SubjectRow({
       <button
         onClick={() => onRemove(index)}
         disabled={!canRemove}
-        className="text-ink-muted/40 hover:text-red-400 disabled:opacity-20 disabled:cursor-not-allowed p-1"
+        className="text-ink-muted/30 hover:text-accent disabled:opacity-0 disabled:cursor-not-allowed p-0 text-center"
         aria-label="Remove subject"
       >
-        <span className="text-lg leading-none">&times;</span>
+        <span className="text-sm leading-none">&times;</span>
       </button>
     </div>
   );

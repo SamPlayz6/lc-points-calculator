@@ -12,10 +12,10 @@ function HomePage() {
   const handlePointsChange = useCallback((p: number) => setPoints(p), []);
 
   return (
-    <div className="min-h-screen bg-surface flex flex-col">
+    <div className="min-h-screen bg-paper flex flex-col">
       <Header />
 
-      <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-6 sm:py-8 space-y-6">
+      <main className="flex-1 max-w-3xl mx-auto w-full px-4">
         {/* AdSense placeholder */}
         <div id="adsense-top" />
 
