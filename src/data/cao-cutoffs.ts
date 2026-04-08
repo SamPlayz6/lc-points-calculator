@@ -123,6 +123,52 @@ export const CAO_COURSES: CAOCourse[] = [
   { code: 'RC001', name: 'Medicine', college: 'RCSI', points: 743, note: 'HPAT required' },
   { code: 'RC002', name: 'Pharmacy', college: 'RCSI', points: 538 },
   { code: 'RC003', name: 'Physiotherapy', college: 'RCSI', points: 578 },
+
+  // DKIT (Dundalk Institute of Technology)
+  { code: 'DK810', name: 'Business Studies', college: 'DKIT', points: 236 },
+  { code: 'DK830', name: 'Computing', college: 'DKIT', points: 268 },
+  { code: 'DK850', name: 'Engineering', college: 'DKIT', points: 220 },
+  { code: 'DK860', name: 'Nursing (General)', college: 'DKIT', points: 370 },
+  { code: 'DK870', name: 'Creative Media', college: 'DKIT', points: 254 },
+
+  // Mary Immaculate College (Limerick)
+  { code: 'MI001', name: 'Education (Primary Teaching)', college: 'Mary Immaculate College', points: 498 },
+  { code: 'MI003', name: 'Liberal Arts', college: 'Mary Immaculate College', points: 300 },
+  { code: 'MI006', name: 'Psychology', college: 'Mary Immaculate College', points: 475 },
+  { code: 'MI009', name: 'Mathematics & Computer Studies', college: 'Mary Immaculate College', points: 380 },
+
+  // ATU Sligo
+  { code: 'SL100', name: 'Business', college: 'ATU Sligo', points: 216 },
+  { code: 'SL200', name: 'Science', college: 'ATU Sligo', points: 232 },
+  { code: 'SL300', name: 'Engineering', college: 'ATU Sligo', points: 200 },
+  { code: 'SL400', name: 'Computing', college: 'ATU Sligo', points: 242 },
+  { code: 'SL500', name: 'Social Science', college: 'ATU Sligo', points: 268 },
+
+  // MTU Kerry
+  { code: 'TL700', name: 'Business Studies', college: 'MTU Kerry', points: 220 },
+  { code: 'TL800', name: 'Computing', college: 'MTU Kerry', points: 252 },
+  { code: 'TL850', name: 'Health & Leisure', college: 'MTU Kerry', points: 236 },
+
+  // SETU Carlow
+  { code: 'CW028', name: 'Computing', college: 'SETU Carlow', points: 268 },
+  { code: 'CW038', name: 'Business', college: 'SETU Carlow', points: 232 },
+  { code: 'CW048', name: 'Science', college: 'SETU Carlow', points: 254 },
+  { code: 'CW078', name: 'Sports Management', college: 'SETU Carlow', points: 268 },
+  { code: 'CW088', name: 'Engineering', college: 'SETU Carlow', points: 216 },
+
+  // Additional popular UCD courses
+  { code: 'DN300', name: 'Architecture', college: 'UCD', points: 507, note: 'Portfolio' },
+  { code: 'DN410', name: 'Physiotherapy', college: 'UCD', points: 578 },
+  { code: 'DN420', name: 'Radiography', college: 'UCD', points: 531 },
+
+  // Additional TCD courses
+  { code: 'TR080', name: 'Psychology', college: 'TCD', points: 578 },
+  { code: 'TR033', name: 'Mathematics', college: 'TCD', points: 508 },
+
+  // Additional UCC courses
+  { code: 'CK109', name: 'Music', college: 'UCC', points: 356 },
+  { code: 'CK110', name: 'Film & Screen Media', college: 'UCC', points: 436 },
+  { code: 'CK503', name: 'Midwifery', college: 'UCC', points: 436 },
 ];
 
 // All unique colleges for filtering
